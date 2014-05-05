@@ -6,14 +6,14 @@
 
 Name:             python-saharaclient
 Version:          0.7.0
-Release:          1%{?dist}
+Release:          3%{?dist}
 Provides:         python-savannaclient = %{version}-%{release}
 Obsoletes:        python-savannaclient <= 0.5.0-2
 Summary:          Client library for OpenStack Sahara API
 License:          ASL 2.0
 URL:              https://launchpad.net/sahara
 Source0:          http://tarballs.openstack.org/python-saharaclient/python-saharaclient-%{version}.tar.gz
-
+Patch0001:        0001-remove-runtime-dep-on-python-pbr.patch
 BuildArch:        noarch
 
 BuildRequires:    python-setuptools
@@ -36,6 +36,12 @@ Python client library for interacting with OpenStack Sahara API.
 
 %prep
 %setup -q -n %{name}-%{version}
+
+%patch0001 -p0
+
+sed -i s/REDHAT_SAHARACLIENT_VERSION/%{version}/ saharaclient/version.py
+sed -i s/REDHAT_SAHARACLIENT_RELEASE/%{release}/ saharaclient/version.py
+
 rm -rf python_saharaclient.egg-info
 rm -rf test-requirements.txt
 
@@ -62,6 +68,12 @@ rm -rf test-requirements.txt
 
 
 %changelog
+* Mon May 05 2014 Michael McCune <mimccune@redhat> - 0.7.0-3
+- Changing the version/release temp for patch
+
+* Mon May 05 2014 Michael McCune <mimccune@redhat> - 0.7.0-2
+- Adding patch to remove runtime pbr dep
+
 * Thu Apr  3 2014 Michael McCune <mimccune@redhat> - 0.7.0-1
 - 0.7.0 release and rename from python-savannaclient
 
