@@ -6,7 +6,7 @@
 
 Name:             python-saharaclient
 Version:          0.7.0
-Release:          3%{?dist}
+Release:          4%{?dist}
 Provides:         python-savannaclient = %{version}-%{release}
 Obsoletes:        python-savannaclient <= 0.5.0-2
 Summary:          Client library for OpenStack Sahara API
@@ -68,6 +68,9 @@ rm -rf test-requirements.txt
 
 
 %changelog
+* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.7.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
 * Mon May 05 2014 Michael McCune <mimccune@redhat> - 0.7.0-3
 - Changing the version/release temp for patch
 
