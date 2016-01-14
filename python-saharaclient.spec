@@ -13,15 +13,21 @@ BuildArch:        noarch
 BuildRequires:    python-setuptools
 BuildRequires:    python2-devel
 BuildRequires:    python-d2to1
-BuildRequires:    python-pbr >= 0.5.19
+BuildRequires:    python-pbr >= 1.6
 
 
+Requires:         python-babel >= 1.3
+Requires:         python-cliff
 Requires:         python-iso8601
-Requires:         python-requests
-Requires:         python-six
-Requires:         python-setuptools
-Requires:         python-babel
-Requires:         python-netaddr
+Requires:         python-keystoneclient
+Requires:         python-oslo-i18n
+Requires:         python-oslo-log
+Requires:         python-oslo-utils
+Requires:         python-netaddr >= 0.7.12
+Requires:         python-pbr
+Requires:         python-prettytable
+Requires:         python-requests >= 2.5.2
+Requires:         python-six >= 1.9.0
 
 
 %description
@@ -32,7 +38,7 @@ Python client library for interacting with OpenStack Sahara API.
 %setup -q -n %{name}-%{upstream_version}
 
 rm -rf python_saharaclient.egg-info
-rm -rf test-requirements.txt
+rm -rf {,test-}requirements.txt
 
 
 %build
