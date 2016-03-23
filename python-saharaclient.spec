@@ -1,12 +1,13 @@
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 Name:             python-saharaclient
-Version:          XXX
-Release:          XXX
+Version:          0.13.0
+Release:          1%{?dist}
 Provides:         python-savannaclient = %{version}-%{release}
 Obsoletes:        python-savannaclient <= 0.5.0-2
 Summary:          Client library for OpenStack Sahara API
 License:          ASL 2.0
 URL:              https://launchpad.net/sahara
-Source0:          http://tarballs.openstack.org/python-saharaclient/python-saharaclient-%{version}.tar.gz
+Source0:          http://tarballs.openstack.org/python-saharaclient/python-saharaclient-%{version}%{?milestone}.tar.gz
 
 BuildArch:        noarch
 
@@ -64,3 +65,5 @@ rm -rf {,test-}requirements.txt
 
 
 %changelog
+* Wed Mar 23 2016 RDO <rdo-list@redhat.com> 0.13.0-0.1
+-  Rebuild for Mitaka 
